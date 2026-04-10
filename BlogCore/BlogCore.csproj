@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>aspnet-BlogCore-a4b10866-96a8-48a0-8de5-770569053103</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="10.0.5"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.5"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="10.0.5"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.5" />
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="10.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BlogCoreSolution.DataAccess\BlogCoreSolution.DataAccess.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Areas\Admin\Controllers\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Areas\Client\Views\Home\Index.cshtml" />
+      <AdditionalFiles Include="Views\Shared\Error.cshtml" />
+      <AdditionalFiles Include="Views\Shared\_Layout.cshtml" />
+      <AdditionalFiles Include="Views\Shared\_LoginPartial.cshtml" />
+      <AdditionalFiles Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Areas\Client\Views\Shared\Error.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Client\Views\Shared\_Layout.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Client\Views\Shared\_LoginPartial.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Client\Views\Shared\_ValidationScriptsPartial.cshtml" />
+    </ItemGroup>
+
+</Project>

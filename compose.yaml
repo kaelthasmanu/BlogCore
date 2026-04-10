@@ -1,0 +1,7 @@
+﻿services:
+  blogcore:
+    image: blogcore
+    build:
+      context: .
+      dockerfile: BlogCore/Dockerfile
+

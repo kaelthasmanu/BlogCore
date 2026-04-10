@@ -1,0 +1,132 @@
+# Archivos de compilación y dependencias
+**/bin/
+**/obj/
+**/out/
+**/output/
+
+# Archivos específicos de .NET
+*.user
+*.userprefs
+*.suo
+*.cache
+*.pidb
+*.psess
+*.sln.docstates
+*.orig
+*.tmp
+
+# Archivos de configuración de usuario
+*.vs/
+.vs/
+.idea/
+.vscode/
+
+# Archivos de base de datos locales
+*.db
+*.mdf
+*.ldf
+*.db-shm
+*.db-wal
+
+# Archivos de logs
+*.log
+*.logs
+
+# Archivos de publicación
+*.pubxml.user
+PublishProfiles/
+
+# Archivos de Docker (si no quieres subir imágenes o volúmenes)
+.docker/
+docker-compose.override.yml
+
+# Archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# Archivos de cobertura de pruebas
+*.coverage
+*.coverage.xml
+*.coverlet
+
+# Archivos específicos de Rider/ReSharper
+_ReSharper*/
+*.DotSettings.user
+*.sln.DotSettings.user
+
+# Archivos de NuGet
+packages/
+*.nupkg
+project.lock.json
+project.assets.json
+*.nuget.props
+*.nuget.targets
+
+# Archivos de scaffolding/temporal
+ScaffoldingReadMe.txt
+CodeGeneration/
+
+# Archivos de perfil de lanzamiento
+**/Properties/launchSettings.json
+!**/Properties/launchSettings.json
+
+# Archivos de diagnóstico
+*.etl
+*.diag
+
+# Archivos de caché
+*.cache
+*.temp
+*.tmp
+
+# Archivos del sistema operativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Archivos de editor
+*.swp
+*.swo
+*~
+.~lock.*
+
+# Archivos comprimidos temporales
+**/compressed/
+
+# Archivos de build host
+**/BuildHost-*/
+
+# Archivos de store de paquetes
+**/.store/
+
+# Archivos de dependencias no necesarias
+**/runtimes/ (excepto si es necesario para tu proyecto)
+
+# Archivos de recursos locales
+**/cs/
+**/de/
+**/es/
+**/fr/
+**/it/
+**/ja/
+**/ko/
+**/pl/
+**/pt-BR/
+**/ru/
+**/tr/
+**/zh-Hans/
+**/zh-Hant/
+# (excepto los que realmente necesites para tu aplicación)
+
+# Archivos de scaffolding generados automáticamente
+**/codegeneration.targets
+**/codegeneration.designer.deps.json
+
+# Archivos de migraciones que no quieras subir (opcional)
+# **/Migrations/Snapshot.cs
