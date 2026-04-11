@@ -31,10 +31,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Areas\Admin\Controllers\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <AdditionalFiles Include="Areas\Client\Views\Home\Index.cshtml" />
       <AdditionalFiles Include="Views\Shared\Error.cshtml" />
       <AdditionalFiles Include="Views\Shared\_Layout.cshtml" />
@@ -47,6 +43,7 @@
       <_ContentIncludedByDefault Remove="Areas\Client\Views\Shared\_Layout.cshtml" />
       <_ContentIncludedByDefault Remove="Areas\Client\Views\Shared\_LoginPartial.cshtml" />
       <_ContentIncludedByDefault Remove="Areas\Client\Views\Shared\_ValidationScriptsPartial.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Admin\Views\Categories\Index.cshtml" />
     </ItemGroup>
 
 </Project>

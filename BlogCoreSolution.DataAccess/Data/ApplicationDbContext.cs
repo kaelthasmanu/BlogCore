@@ -1,5 +1,4 @@
-﻿using BlogCore.Models;
-using BlogCoreSolution.Models;
+﻿using BlogCoreSolution.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
