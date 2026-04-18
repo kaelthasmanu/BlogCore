@@ -8,14 +8,14 @@ $(document).ready(function () {
 function cargarDatatable() {
     dataTable = $("#tblCategorias").DataTable({
         "ajax": {
-            "url": "/admin/categories/GetAll",
+            "url": "/Admin/Categorias/GetAll",
             "type": "GET",
             "datatype": "json"
         },
         "columns": [
             { "data": "id", "width": "5%" },
-            { "data": "nombre", "width": "40%" },
-            { "data": "orden", "width": "10%" },
+            { "data": "name", "width": "40%" },
+            { "data": "order", "width": "10%" },
             {
                 "data": "id",
                 "render": function (data) {
@@ -24,7 +24,7 @@ function cargarDatatable() {
                                 <i class="far fa-edit"></i> Editar
                                 </a>
                                 &nbsp;
-                                <a onclick=Delete("/Admin/Categories/Delete/${data}") class="btn btn-danger text-white" style="cursor:pointer; width:140px;">
+                                <a onclick=Delete("/Admin/Categorias/Delete/${data}") class="btn btn-danger text-white" style="cursor:pointer; width:140px;">
                                 <i class="far fa-trash-alt"></i> Borrar
                                 </a>
                           </div>

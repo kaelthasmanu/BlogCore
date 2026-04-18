@@ -1,21 +1,13 @@
-@page
-@using Microsoft.EntityFrameworkCore.Metadata.Internal
 @model BlogCoreSolution.Models.Category
 
 @{
     ViewData["Title"] = "Create Category";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title></title>
-</head>
-<body>
 <div>
     <h2 class="text-center">Create new category</h2>
     <form method="post" asp-action="Create">
+        @Html.AntiForgeryToken()
         <div class="row px-2 offset-1 border">
             <div asp-validation-summary="All" class="text-danger">
                 <div class="col-10 offset-1 mt-4">
@@ -29,7 +21,7 @@
                         </div>
                     </div>
                     
-                    <div class="form-group-row">
+                    <div class="form-group-row mt-3">
                         <div class="col-8">
                             <partial name="_ViewCreateBack"/>
                         </div>
@@ -40,5 +32,7 @@
         </div>
     </form>
 </div>
-</body>
-</html>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

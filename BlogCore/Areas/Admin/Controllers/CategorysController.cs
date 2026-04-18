@@ -1,4 +1,5 @@
 using BlogCoreSolution.DataAccess.Data.Repository.IRepository;
+using BlogCoreSolution.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogCore.Areas.Admin.Controllers;
@@ -22,6 +23,21 @@ public class CategoriasController : Controller
     public IActionResult Create()
     {
         return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Create(Category category)
+    {
+        if (ModelState.IsValid)
+        {
+            _containerWork.Category.Create(category);
+            _containerWork.Save();
+            return RedirectToAction(nameof(Index));
+        }
+
+        // If we got here something failed; return to the view with validation messages
+        return View(category);
     }
 
     #region API Calls
