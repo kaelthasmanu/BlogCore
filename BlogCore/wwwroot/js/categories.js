@@ -58,8 +58,6 @@ function cargarDatatable() {
 }
 
 function Delete(url) {
-    // Use SweetAlert2 (Swal.fire) promise API instead of the old swal callback style.
-    // This avoids calling the minified class constructor incorrectly.
     Swal.fire({
         title: '¿Está seguro de borrar?',
         text: 'Este contenido no se puede recuperar!',
