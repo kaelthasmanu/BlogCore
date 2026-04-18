@@ -18,6 +18,12 @@ public class CategoriasController : Controller
         return View();
     }
 
+    [HttpGet]
+    public IActionResult Create()
+    {
+        return View();
+    }
+
     #region API Calls
     public IActionResult GetAll()
     {
