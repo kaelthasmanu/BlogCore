@@ -22,7 +22,8 @@ public class CategoriasController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        return View();
+        // Return an empty model so the strongly-typed view has a non-null Model instance
+        return View(new BlogCoreSolution.Models.Category());
     }
 
     [HttpPost]
@@ -31,6 +32,8 @@ public class CategoriasController : Controller
     {
         if (ModelState.IsValid)
         {
+            // Ensure CreatedDate is set when creating a new category
+            category.CreatedDate = DateTime.UtcNow;
             _containerWork.Category.Create(category);
             _containerWork.Save();
             return RedirectToAction(nameof(Index));

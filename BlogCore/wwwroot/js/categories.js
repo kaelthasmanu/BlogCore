@@ -16,6 +16,7 @@ function cargarDatatable() {
             { "data": "id", "width": "5%" },
             { "data": "name", "width": "40%" },
             { "data": "order", "width": "10%" },
+            { "data": "createdDate", "width": "20%" },
             {
                 "data": "id",
                 "render": function (data) {
