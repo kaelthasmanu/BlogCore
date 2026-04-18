@@ -88,7 +88,19 @@ public class CategoriasController : Controller
         var categoryList = _containerWork.Category.GetAll();
         return Json(new { data = categoryList });
     }
-    
+
+    [HttpDelete]
+    public IActionResult Delete(int id)
+    {
+        var objFromDb = _containerWork.Category.Get(id);
+        if (objFromDb == null)
+        {
+            return Json(new { success = false, message = "Error while deleting" });
+        }
+        _containerWork.Category.Delete(objFromDb);
+        _containerWork.Save();
+        return Json(new { success = true, message = "Delete successful" });
+    }
 
     #endregion
 }

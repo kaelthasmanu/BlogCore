@@ -58,27 +58,32 @@ function cargarDatatable() {
 }
 
 function Delete(url) {
-    swal({
-        title: "Esta seguro de borrar?",
-        text: "Este contenido no se puede recuperar!",
-        type: "warning",
+    // Use SweetAlert2 (Swal.fire) promise API instead of the old swal callback style.
+    // This avoids calling the minified class constructor incorrectly.
+    Swal.fire({
+        title: '¿Está seguro de borrar?',
+        text: 'Este contenido no se puede recuperar!',
+        icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Si, borrar!",
-        closeOnconfirm: true
-    }, function () {
-        $.ajax({
-            type: 'DELETE',
-            url: url,
-            success: function (data) {
-                if (data.success) {
-                    toastr.success(data.message);
-                    dataTable.ajax.reload();
+        confirmButtonColor: '#DD6B55',
+        confirmButtonText: 'Sí, borrar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: 'DELETE',
+                url: url,
+                success: function (data) {
+                    if (data.success) {
+                        toastr.success(data.message);
+                        dataTable.ajax.reload();
+                    } else {
+                        toastr.error(data.message);
+                    }
+                },
+                error: function (xhr, status, err) {
+                    toastr.error('Ocurrió un error al intentar borrar.');
                 }
-                else {
-                    toastr.error(data.message);
-                }
-            }
-        });
+            });
+        }
     });
 }
