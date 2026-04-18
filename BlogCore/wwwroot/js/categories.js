@@ -16,7 +16,16 @@ function cargarDatatable() {
             { "data": "id", "width": "5%" },
             { "data": "name", "width": "40%" },
             { "data": "order", "width": "10%" },
-            { "data": "createdDate", "width": "20%" },
+            {
+                "data": "createdDate",
+                "width": "20%",
+                "render": function (data){
+                    if(!data){
+                        return '';
+                    }
+                    return new Date(data).toLocaleDateString("en-US", );
+                }
+            },
             {
                 "data": "id",
                 "render": function (data) {
