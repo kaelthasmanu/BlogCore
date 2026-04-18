@@ -1,0 +1,60 @@
+/* Custom admin styles for category create/edit views */
+.admin-category-create h2 {
+  font-weight: 600;
+  color: #333;
+}
+
+.admin-category-create .card {
+  border: 1px solid rgba(0,0,0,0.06);
+  background: linear-gradient(180deg, #ffffff 0%, #fbfbff 100%);
+  border-radius: 10px;
+}
+
+.admin-category-create .form-label {
+  font-weight: 500;
+  color: #444;
+}
+
+.admin-category-create .form-control {
+  border-radius: 6px;
+  border: 1px solid #dfe3e8;
+  padding: 0.5rem 0.75rem;
+  box-shadow: none;
+}
+
+.admin-category-create .form-control:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 6px 20px rgba(108,99,255,0.08);
+}
+
+.admin-category-create .text-danger.small {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+/* Style for the back/create partial if it renders buttons */
+.admin-category-create .btn {
+  border-radius: 6px;
+  padding: 0.45rem 0.75rem;
+}
+
+.admin-category-create .btn-primary {
+  background-color: #6c63ff;
+  border-color: #5a52e6;
+}
+
+.admin-category-create .btn-outline-secondary {
+  background: transparent;
+  border-color: #dfe3e8;
+}
+
+.admin-category-create .card {
+  padding: 1.25rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .admin-category-create .card { padding: 1rem; }
+}
+
+

@@ -22,11 +22,11 @@ function cargarDatatable() {
                 "render": function (data) {
                     return `<div class="text-center">
                                 <a href="/Admin/Categorias/Edit/${data}" class="btn btn-success text-white" style="cursor:pointer; width:140px;">
-                                <i class="far fa-edit"></i> Editar
+                                <i class="bi bi-pencil"></i> Editar
                                 </a>
                                 &nbsp;
                                 <a onclick=Delete("/Admin/Categorias/Delete/${data}") class="btn btn-danger text-white" style="cursor:pointer; width:140px;">
-                                <i class="far fa-trash-alt"></i> Borrar
+                                <i class="bi bi-trash"></i> Borrar
                                 </a>
                           </div>
                          `;

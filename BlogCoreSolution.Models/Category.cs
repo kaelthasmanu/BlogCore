@@ -3,6 +3,11 @@ namespace BlogCoreSolution.Models;
 
 public class Category
 {
+
+    public Category()
+    {
+        CreatedDate = DateTime.UtcNow;
+    }
     public int Id { get; set; }
     
     [MaxLength(100)]
