@@ -15,7 +15,11 @@ public class CategoryRepository : Repository<Category>, ICategoryRepository
     public void Update(Category category)
     {
         var obj = _dbContext.Categories.FirstOrDefault(x => x.Id == category.Id);
+        if (obj == null)
+            return;
+
         obj.Name = category.Name;
-        obj.Order =  category.Order;
+        obj.Order = category.Order;
+        _dbContext.Categories.Update(obj);
     }
 }

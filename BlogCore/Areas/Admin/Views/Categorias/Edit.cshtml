@@ -1,0 +1,51 @@
+@model BlogCoreSolution.Models.Category
+
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<!-- include a small custom stylesheet just for admin/category views -->
+@section Styles {
+    <link rel="stylesheet" href="~/css/custom-admin.css" />
+}
+
+<div class="admin-category-create container mt-4">
+    <h2 class="text-center mb-4">Edit category</h2>
+
+    <form method="post" asp-action="Edit" class="card p-4 shadow-sm">
+        @Html.AntiForgeryToken()
+
+        @* Hidden Id so the posted model contains the entity key *@
+        <input asp-for="Id" type="hidden" />
+
+        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+        <div class="row g-3 align-items-center">
+            <div class="col-md-6">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" placeholder="Category name" />
+                <span asp-validation-for="Name" class="text-danger small"></span>
+            </div>
+
+            <div class="col-md-3">
+                <label asp-for="Order" class="form-label"></label>
+                <input asp-for="Order" class="form-control" placeholder="Order" />
+                <span asp-validation-for="Order" class="text-danger small"></span>
+            </div>
+
+            <div class="col-md-3 d-flex align-items-end">
+                <div class="w-100">
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary flex-fill">Edit</button>
+                        <a asp-action="Index" class="btn btn-outline-secondary flex-fill">Back to list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
