@@ -2,7 +2,7 @@ using BlogCoreSolution.Models;
 
 namespace BlogCoreSolution.DataAccess.Data.Repository.IRepository;
 
-public interface ICategoryRepository : IRepository<Category>
+public interface IArticleRepository : IRepository<Article>
 {
-    void Update(Category category);
+    void Update(Article article);
 }

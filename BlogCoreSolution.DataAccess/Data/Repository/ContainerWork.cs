@@ -9,8 +9,10 @@ public class ContainerWork : IContainerWork
     {
         _dbContext = dbContext;
         Category = new CategoryRepository(_dbContext);
+        Article = new ArticleRepository(_dbContext);
     }
     public ICategoryRepository Category { get; private set; }
+    public IArticleRepository Article { get; private set; }
 
     public void Save()
     {

@@ -6,6 +6,10 @@ namespace BlogCoreSolution.Models;
 
 public class Article
 {
+    public Article()
+    {
+            CreatedOn = DateTime.UtcNow;
+    }
     public int Id { get; set; }
     
     [Required(ErrorMessage = "Article title is required.")]
