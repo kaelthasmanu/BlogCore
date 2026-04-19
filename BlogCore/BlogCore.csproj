@@ -44,6 +44,7 @@
       <_ContentIncludedByDefault Remove="Areas\Client\Views\Shared\_LoginPartial.cshtml" />
       <_ContentIncludedByDefault Remove="Areas\Client\Views\Shared\_ValidationScriptsPartial.cshtml" />
       <_ContentIncludedByDefault Remove="Areas\Admin\Views\Categories\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Areas\Admin\Views\Article\Index.cshtml" />
     </ItemGroup>
 
 </Project>

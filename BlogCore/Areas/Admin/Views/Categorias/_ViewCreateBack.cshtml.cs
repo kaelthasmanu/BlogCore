@@ -4,4 +4,8 @@
 // file (empty) prevents accidental Razor Pages compilation. If you prefer,
 // you can delete this file from disk using your IDE.
 
-// ... file intentionally left blank ...
+// Placeholder to prevent this views code-behind from being treated as a Razor Page PageModel.
+namespace BlogCore.Areas.Admin.Views.Categorias
+{
+    internal class ViewCreateBack_ViewPlaceholder { }
+}
