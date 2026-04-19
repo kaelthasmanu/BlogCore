@@ -1,0 +1,30 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.InteropServices.JavaScript;
+
+namespace BlogCoreSolution.Models;
+
+public class Article
+{
+    public int Id { get; set; }
+    
+    [Required(ErrorMessage = "Article title is required.")]
+    public string Name { get; set; }
+    
+    [Required(ErrorMessage = "Article content is required.")]
+    [Display(Name = "Article content")]
+    public string Description { get; set; }
+    
+    [Display(Name = "Date Created")]
+    public DateTime CreatedOn { get; set; }
+    
+    [DataType(DataType.ImageUrl)]
+    [Display(Name = "Image URL")]
+    public string UrlImage { get; set; }
+    
+    [Required(ErrorMessage = "Category is required.")]
+    public int IdCategory { get; set; }
+    
+    [ForeignKey("IdCategory")]
+    public Category Category { get; set; }
+}

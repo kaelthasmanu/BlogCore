@@ -12,6 +12,7 @@ public class ApplicationDbContext : IdentityDbContext
         
     }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Article> Articles { get; set; }
 }
 
 
