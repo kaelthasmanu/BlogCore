@@ -7,8 +7,8 @@ $(document).ready(function () {
 function cargarDatatable() {
     dataTable = $("#tblArticulos").DataTable({
         "ajax": {
-            // The controller is 'ArticleController' so the route is /Admin/Article/GetAll
-            "url": "/Admin/Article/GetAll",
+            // Controller is 'Articles' (plural) under Admin area
+            "url": "/Admin/Articles/GetAll",
             "type": "GET",
             "datatype": "json"
         },
@@ -28,7 +28,8 @@ function cargarDatatable() {
                 }
             },
             {
-                "data": "createdDate",
+                // Article model uses CreatedOn -> JSON field will be createdOn
+                "data": "createdOn",
                 "width": "15%",
                 "render": function (data) {
                     if (!data) {
@@ -45,11 +46,11 @@ function cargarDatatable() {
                 "data": "id",
                 "render": function (data) {
                     return `<div class="text-center">
-                                <a href="/Admin/Article/Edit/${data}" class="btn btn-success text-white" style="cursor:pointer; width:140px;">
+                                <a href="/Admin/Articles/Edit/${data}" class="btn btn-success text-white" style="cursor:pointer; width:140px;">
                                     <i class="bi bi-pencil"></i> Editar
                                 </a>
                                 &nbsp;
-                                <a onclick="Delete('/Admin/Article/Delete/${data}')" class="btn btn-danger text-white" style="cursor:pointer; width:140px;">
+                                <a onclick="Delete('/Admin/Articles/Delete/${data}')" class="btn btn-danger text-white" style="cursor:pointer; width:140px;">
                                     <i class="bi bi-trash"></i> Borrar
                                 </a>
                             </div>`;

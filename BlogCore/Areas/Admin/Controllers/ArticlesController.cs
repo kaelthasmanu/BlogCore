@@ -22,19 +22,21 @@ public class ArticlesController : Controller
     #region API Calls
     public IActionResult GetAll()
     {
-        var categoryList = _containerWork.Article.GetAll();
-        return Json(new { data = categoryList });
+        // Include the Category navigation property so DataTables can access category.name
+        var articleList = _containerWork.Article.GetAll(includeProperties: "Category");
+        return Json(new { data = articleList });
     }
 
     [HttpDelete]
     public IActionResult Delete(int id)
     {
-        var objFromDb = _containerWork.Category.Get(id);
+        // Use the Article repository to delete articles (was incorrectly using Category)
+        var objFromDb = _containerWork.Article.Get(id);
         if (objFromDb == null)
         {
             return Json(new { success = false, message = "Error while deleting" });
         }
-        _containerWork.Category.Delete(objFromDb);
+        _containerWork.Article.Delete(objFromDb);
         _containerWork.Save();
         return Json(new { success = true, message = "Delete successful" });
     }

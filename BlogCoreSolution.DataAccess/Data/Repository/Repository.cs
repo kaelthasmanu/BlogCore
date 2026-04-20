@@ -64,7 +64,9 @@ public class Repository<T> : IRepository<T> where T : class
 
     public void Update(T entity)
     {
-        throw new NotImplementedException();
+        // Attach entity and mark as modified to support generic updates
+        dbSet.Attach(entity);
+        Context.Entry(entity).State = EntityState.Modified;
     }
 
     public void Delete(T entity)
