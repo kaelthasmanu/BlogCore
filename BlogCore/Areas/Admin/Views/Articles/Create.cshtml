@@ -1,0 +1,49 @@
+@model BlogCoreSolution.Models.ViewModels.ArticleVM
+
+@{
+    ViewData["Title"] = "Create Article";
+}
+
+<div class="container mt-4">
+    <h2>Create Article</h2>
+
+    <form asp-action="Create" method="post" class="card p-4">
+        @Html.AntiForgeryToken()
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label asp-for="article.Name" class="form-label"></label>
+            <input asp-for="article.Name" class="form-control" />
+            <span asp-validation-for="article.Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="article.Description" class="form-label"></label>
+            <textarea asp-for="article.Description" class="form-control" rows="6"></textarea>
+            <span asp-validation-for="article.Description" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="article.UrlImage" class="form-label"></label>
+            <input asp-for="article.UrlImage" class="form-control" />
+            <span asp-validation-for="article.UrlImage" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="article.IdCategory" class="form-label">Category</label>
+            <select asp-for="article.IdCategory" asp-items="Model.Categories" class="form-select">
+                <option value="">-- Select category --</option>
+            </select>
+            <span asp-validation-for="article.IdCategory" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Back</a>
+    </form>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

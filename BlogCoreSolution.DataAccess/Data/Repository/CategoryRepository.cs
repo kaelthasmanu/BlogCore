@@ -1,5 +1,6 @@
 using BlogCoreSolution.DataAccess.Data.Repository.IRepository;
 using BlogCoreSolution.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlogCoreSolution.DataAccess.Data.Repository;
@@ -21,5 +22,14 @@ public class CategoryRepository : Repository<Category>, ICategoryRepository
         obj.Name = category.Name;
         obj.Order = category.Order;
         _dbContext.Categories.Update(obj);
+    }
+
+    public IEnumerable<SelectListItem> CategoriesList()
+    {
+        return _dbContext.Categories.Select(x => new SelectListItem
+        {
+            Text = x.Name,
+            Value = x.Id.ToString()
+        }).ToList();
     }
 }

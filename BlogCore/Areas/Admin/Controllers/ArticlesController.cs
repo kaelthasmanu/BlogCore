@@ -1,4 +1,5 @@
 using BlogCoreSolution.DataAccess.Data.Repository.IRepository;
+using BlogCoreSolution.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogCore.Areas.Admin.Controllers;
@@ -17,6 +18,37 @@ public class ArticlesController : Controller
     public IActionResult Index()
     {
         return View();
+    }
+
+    [HttpGet]
+    public IActionResult Create()
+    {
+        ArticleVM articleVm = new ArticleVM()
+        {
+            article = new BlogCoreSolution.Models.Article(),
+            // ArticleVM defines the property 'Categories' for the select list
+            Categories = _containerWork.Category.CategoriesList()
+        };
+        return View(articleVm);
+    }
+    
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Create(ArticleVM vm)
+    {
+        if (!ModelState.IsValid)
+        {
+            // repopulate categories for the dropdown when returning the view
+            vm.Categories = _containerWork.Category.CategoriesList();
+            return View(vm);
+        }
+
+        // ensure creation date is set
+        vm.article.CreatedOn = DateTime.UtcNow;
+        _containerWork.Article.Create(vm.article);
+        _containerWork.Save();
+
+        return RedirectToAction(nameof(Index));
     }
     
     #region API Calls
