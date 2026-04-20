@@ -82,30 +82,52 @@ function cargarDatatable() {
 }
 
 function Delete(url) {
-    Swal.fire({
-        title: '¿Está seguro de borrar?',
-        text: 'Este contenido no se puede recuperar!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#DD6B55',
-        confirmButtonText: 'Sí, borrar!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                type: 'DELETE',
-                url: url,
-                success: function (data) {
-                    if (data.success) {
-                        toastr.success(data.message);
-                        dataTable.ajax.reload();
-                    } else {
-                        toastr.error(data.message);
-                    }
-                },
-                error: function (xhr, status, err) {
-                    toastr.error('Ocurrió un error al intentar borrar.');
+    var useSwal = false;
+    try {
+        useSwal = typeof Swal !== 'undefined' && typeof Swal.fire === 'function';
+    } catch (e) {
+        useSwal = false;
+    }
+
+    var doAjaxDelete = function () {
+        $.ajax({
+            type: 'DELETE',
+            url: url,
+            success: function (data) {
+                if (data.success) {
+                    toastr.success(data.message);
+                    if (dataTable && dataTable.ajax) dataTable.ajax.reload();
+                } else {
+                    toastr.error(data.message);
+                }
+            },
+            error: function (xhr, status, err) {
+                toastr.error('Ocurrió un error al intentar borrar.');
+            }
+        });
+    };
+
+    if (useSwal) {
+        try {
+            Swal.fire({
+                title: '¿Está seguro de borrar?',
+                text: 'Este contenido no se puede recuperar!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#DD6B55',
+                confirmButtonText: 'Sí, borrar!'
+            }).then((result) => {
+                if (result && result.isConfirmed) {
+                    doAjaxDelete();
                 }
             });
+            return;
+        } catch (err) {
+            console.warn('Swal.fire failed, falling back to confirm()', err);
         }
-    });
+    }
+
+    if (confirm('¿Está seguro de borrar? Este contenido no se puede recuperar!')) {
+        doAjaxDelete();
+    }
 }

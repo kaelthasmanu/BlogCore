@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace BlogCore.Areas.Admin.Controllers;
 
 [Area("Admin")]
+[Route("Admin/Articles/[action]/{id?}")]
+[Route("Admin/Articulos/[action]/{id?}")]
 public class ArticlesController : Controller
 {
     private readonly IContainerWork _containerWork;
