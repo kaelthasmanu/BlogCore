@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.InteropServices.JavaScript;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace BlogCoreSolution.Models;
 
@@ -27,8 +28,9 @@ public class Article
     public string UrlImage { get; set; }
     
     [Required(ErrorMessage = "Category is required.")]
-    public int IdCategory { get; set; }
+    public int? IdCategory { get; set; }
     
     [ForeignKey("IdCategory")]
-    public Category Category { get; set; }
+    [ValidateNever]
+    public Category? Category { get; set; }
 }

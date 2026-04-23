@@ -7,7 +7,7 @@
 <div class="container mt-4">
     <h2>Create Article</h2>
 
-    <form asp-action="Create" method="post" class="card p-4">
+    <form asp-action="Create" method="post" class="card p-4" enctype="multipart/form-data">
         @Html.AntiForgeryToken()
 
         <div asp-validation-summary="All" class="text-danger"></div>
@@ -29,6 +29,12 @@
             <input asp-for="article.UrlImage" class="form-control" />
             <span asp-validation-for="article.UrlImage" class="text-danger"></span>
         </div>
+
+                <div class="mb-3">
+                    <label asp-for="ImageFile" class="form-label">Upload Image</label>
+                    <input asp-for="ImageFile" type="file" class="form-control" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
 
         <div class="mb-3">
             <label asp-for="article.IdCategory" class="form-label">Category</label>
